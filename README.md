@@ -45,7 +45,7 @@ Make sure you have the DaasAPI headers and library available.
 
 To build both nodes:
 ```shell 
-   make 
+make 
 ```
 
 This will create two executables:\
@@ -54,7 +54,7 @@ This will create two executables:\
 
 To clean up:
 ```shell
-    make clean
+make clean
 ```
 
 Running locally (loopback)
@@ -63,12 +63,12 @@ Open two terminals.
 
 Terminal 1 - Start Nodo A:
 ```shell
-    ./nodo_a
+./nodo_a
 ```
 
 Terminal 2 - Start Nodo B:
 ```shell
-    ./nodo_b
+./nodo_b
 ```
 
 Example session:
