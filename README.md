@@ -39,6 +39,21 @@ Diagram
 
 Messages can be sent in both directions simultaneously.
 
+Dependencies
+---
+- **GCC / G++** (tested with g++ 12.2.0) 
+  Required to compile the C++12 source code.
+
+- **pthread** 
+  Used for multithreading support.
+
+- **BlueZ (libbluetooth)** 
+  Required for Bluetooth communication support. 
+  Install on Debian/Ubuntu with: 
+```bash
+sudo apt-get install libbluetooth-dev
+```
+
 Building
 --------
 Make sure you have the DaasAPI headers and library available.
