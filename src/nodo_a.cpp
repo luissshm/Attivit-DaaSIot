@@ -16,10 +16,3 @@ void runNodoA(const std::string &local_ip, const std::string &remote_ip) {
     running = false;
     receiver.join();
 }
-
-/* int main() { */
-/*     std::cout << "Ejecutando Nodo A (IP local: 127.0.0.1, IP remota: 127.0.0.1)\n"; */
-/*     runNodoA("127.0.0.1", "127.0.0.1"); */
-/*     std::cout << "Nodo A terminado.\n"; */
-/*     return 0; */
-/* } */
