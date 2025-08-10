@@ -1,11 +1,7 @@
 # Attivita-DaaSIot
-=================
 
-This repository contains a simple peer-to-peer chat implemented using the DaasAPI
-communication library. It demonstrates how to send and receive messages between
-two nodes (Nodo A and Nodo B) over an IPv4 link, using the DAAS API.
+This repository contains a simple peer-to-peer chat implemented using the DaasAPI communication library. It demonstrates how to send and receive messages between two nodes (Nodo A and Nodo B) over an IPv4 link, using the DAAS API.
 
-----------------------------------------------------------------------
 Features
 --------
 - Two independent programs: Nodo A and Nodo B.
@@ -19,7 +15,6 @@ Features
   - One thread for receiving messages.
 - Safe console I/O with mutex locking.
 
-----------------------------------------------------------------------
 How it works
 ------------
 Each node:
@@ -32,7 +27,6 @@ Each node:
 
 When you type "exit", the node stops both threads and terminates.
 
-----------------------------------------------------------------------
 Diagram
 -------------
        +----------------+                  +----------------+
@@ -45,62 +39,70 @@ Diagram
 
 Messages can be sent in both directions simultaneously.
 
-----------------------------------------------------------------------
 Building
 --------
 Make sure you have the DaasAPI headers and library available.
 
 To build both nodes:
-    make
+```shell 
+   make 
+```
 
-This will create two executables:
-    nodo_a
+This will create two executables:\
+    nodo_a\
     nodo_b
 
 To clean up:
+```shell
     make clean
+```
 
-----------------------------------------------------------------------
 Running locally (loopback)
 --------------------------
 Open two terminals.
 
 Terminal 1 - Start Nodo A:
+```shell
     ./nodo_a
+```
 
 Terminal 2 - Start Nodo B:
+```shell
     ./nodo_b
+```
 
 Example session:
 ----------------
-# Terminal 1 (Nodo A)
+### Terminal 1 (Nodo A)
+```shell
 Type a message ('exit' to quit): Hello from A
 [Sent] Hello from A
-
+```
+```shell
 [Received] Hi A, this is B
 Type a message ('exit' to quit): exit
-
-# Terminal 2 (Nodo B)
+```
+### Terminal 2 (Nodo B)
+```shell
 [Received] Hello from A
 Type a message ('exit' to quit): Hi A, this is B
 [Sent] Hi A, this is B
+```
 
-----------------------------------------------------------------------
 Running over the network
 ------------------------
 Edit runNodoA() and runNodoB() calls to use the correct IP addresses:
 
 Example:
+```C
     // A = 192.168.1.10, B = 192.168.1.20
     runNodoA("192.168.1.10", "192.168.1.20");
     runNodoB("192.168.1.20", "192.168.1.10");
+```
 
 Then rebuild and run each node on different machines.
 
-----------------------------------------------------------------------
 Notes
 -----
 - localDin and remoteDin must be unique per node.
 - The ports (2020 and 2024) are hardcoded; adjust if needed.
-
-----------------------------------------------------------------------
