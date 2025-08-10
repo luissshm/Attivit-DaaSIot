@@ -94,7 +94,7 @@ Running over the network
 Edit runNodoA() and runNodoB() calls to use the correct IP addresses:
 
 Example:
-```C
+```cpp
     // A = 192.168.1.10, B = 192.168.1.20
     runNodoA("192.168.1.10", "192.168.1.20");
     runNodoB("192.168.1.20", "192.168.1.10");
@@ -106,3 +106,12 @@ Notes
 -----
 - localDin and remoteDin must be unique per node.
 - The ports (2020 and 2024) are hardcoded; adjust if needed.
+
+Known Issue
+---
+At program termination, you may encounter the following runtime error:
+```shell
+free(): invalid pointer
+[1] <pid> IOT instruction ./nodo_a
+```
+This error is caused by improper memory deallocation during shutdown. This is all I know so far...
