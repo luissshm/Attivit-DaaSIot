@@ -110,9 +110,9 @@ Edit runNodoA() and runNodoB() calls to use the correct IP addresses:
 
 Example:
 ```cpp
-    // A = 192.168.1.10, B = 192.168.1.20
-    runNodoA("192.168.1.10", "192.168.1.20");
-    runNodoB("192.168.1.20", "192.168.1.10");
+// A = 192.168.1.10, B = 192.168.1.20
+runNodoA("192.168.1.10", "192.168.1.20");
+runNodoB("192.168.1.20", "192.168.1.10");
 ```
 
 Then rebuild and run each node on different machines.
