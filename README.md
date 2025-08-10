@@ -42,7 +42,7 @@ Messages can be sent in both directions simultaneously.
 Dependencies
 ---
 - **GCC / G++** (tested with g++ 12.2.0) 
-  Required to compile the C++12 source code.
+  Required to compile the C++11 source code.
 
 - **pthread** 
   Used for multithreading support.
