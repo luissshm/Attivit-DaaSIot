@@ -39,10 +39,7 @@ bool mapNode(din_t din, link_t link, const char *uri) {
 }
 void receiveMessages() {
     while (running) {
-        if (node.doPerform(PERFORM_CORE_NO_THREAD) != ERROR_NONE) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            continue;
-        }
+        node.doPerform(PERFORM_CORE_NO_THREAD);
 
         DDO* inboundData = nullptr;
         unsigned char buffer[1025] = {0}; // +1 for null terminator
