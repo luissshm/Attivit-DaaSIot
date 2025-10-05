@@ -24,4 +24,6 @@ bool mapNode(din_t din, link_t link, const char *uri);
 void receiveMessages();
 void sendMessages();
 
+void logEvent(const std::string &context, int code, const std::string &details = "");
+
 #endif // DAAS_CHAT_HPP
