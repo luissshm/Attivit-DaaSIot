@@ -1,17 +1,43 @@
+# === Compiler & Flags ===
 CXX = g++
-CXXFLAGS = -Iinclude -std=c++11 -Wall -Werror
+CXXFLAGS = -Iinclude -std=c++17 -Wall -Wextra -pthread -Wno-unused-parameter
 LDFLAGS = -Llib -ldaas -lpthread -lbluetooth
 
-
+# === Sources ===
 SRC_COMMON = src/daas_chat.cpp
+SRC_DIR = src
+MAIN_DIR = main
 
-all: nodo_a nodo_b
+# === Targets ===
+BIN_DIR = bin
+TARGET_A = $(BIN_DIR)/nodo_a
+TARGET_B = $(BIN_DIR)/nodo_b
 
-nodo_a: main/main_a.cpp src/nodo_a.cpp $(SRC_COMMON)
+# === Default Rule ===
+all: prepare $(TARGET_A) $(TARGET_B)
+
+# === Build Rules ===
+$(TARGET_A): $(MAIN_DIR)/main_a.cpp $(SRC_DIR)/nodo_a.cpp $(SRC_COMMON)
+	@echo "[BUILD] $@"
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-nodo_b: main/main_b.cpp src/nodo_b.cpp $(SRC_COMMON)
+$(TARGET_B): $(MAIN_DIR)/main_b.cpp $(SRC_DIR)/nodo_b.cpp $(SRC_COMMON)
+	@echo "[BUILD] $@"
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
+# === Create folders if missing ===
+prepare:
+	@mkdir -p $(BIN_DIR)
+
+# === Clean ===
 clean:
-	rm -f nodo_a nodo_b
+	@echo "[CLEAN]"
+	rm -f $(BIN_DIR)/nodo_a $(BIN_DIR)/nodo_b
+
+# === Debug ===
+debug: CXXFLAGS += -g -DDEBUG
+debug: clean all
+
+# === Info ===
+print-%:
+	@echo '$*=$($*)'

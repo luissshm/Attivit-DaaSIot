@@ -6,6 +6,15 @@ DaasAPI node;
 std::atomic<bool> running(true);
 std::mutex ioMutex;
 
+// ---------- Utility Logging ----------
+void logEvent(const std::string &context, int code, const std::string &details) {
+    std::lock_guard<std::mutex> lock(ioMutex);
+    std::string msg = "[LOG][" + context + "] code=" + std::to_string(code);
+    if (!details.empty()) msg += " | " + details;
+    std::cout << msg << std::endl;
+}
+
+
 bool initCore(int sid, int din) {
     localSid = sid;
     localDin = din;
