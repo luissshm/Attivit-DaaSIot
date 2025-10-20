@@ -67,6 +67,10 @@ void receiveMessages() {
                 std::cout << "Type a message ('exit' to quit): ";
                 std::cout.flush();
             }
+            
+            inboundData->clearPayload();
+            delete inboundData;
+            inboundData = nullptr;
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -90,7 +94,7 @@ void sendMessages() {
             break;
         }
 
-        DDO out(msg.size());
+        DDO out;
         out.allocatePayload(msg.size());
         out.setPayload(msg.c_str(), msg.size());
         out.setTimestamp(0);
@@ -106,6 +110,7 @@ void sendMessages() {
                 std::cerr << "Error sending message: " << res << std::endl;
             }
         }
+        out.clearPayload();
     }
 
     DaasLogger::instance().log(LogLevel::INFO, "TX", "Sender thread terminated");
